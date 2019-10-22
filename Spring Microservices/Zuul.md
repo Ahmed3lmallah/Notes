@@ -33,7 +33,7 @@ Zuul allows us to load balance requests from our UI to our backend system. But i
     
 *   **No firewall headaches**: Since all requests from the UI are routed through Zuul, our UI microservice is the only one we need to expose to the public.
 
-![image](/images/zuul.png)
+![image](../images/zuul.png)
 
 ## How?
 
