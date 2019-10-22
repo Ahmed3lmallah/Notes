@@ -80,7 +80,7 @@ According to OWASP, the definition of Cross Site Request Forgery attacks is: “
 * [Prepared Statements](https://www.w3schools.com/php/php_mysql_prepared_statements.asp)
 
 
-### Tutorial: [Spring Security Tutorial](https://github.com/Ahmed3lmallah/Java-Portfolio/blob/master/Tutorials/spring-security-tutorial.md)
+### Tutorial: [Spring Security Tutorial](../tutorials/spring-security-tutorial.md)
 
 ## OAuth 2.0
 
@@ -158,6 +158,6 @@ The client secret is like a password for the given client. The client secret is 
 
 This is an endpoint on the authorization server that allows resource servers to exchange valid tokens for the associated user data.
 
-### Tutorial: [OAuth 2 Tutorial](https://github.com/Ahmed3lmallah/Java-Portfolio/blob/master/Tutorials/oauth-tutorial.md)
+### Tutorial: [OAuth 2 Tutorial](../tutorials/oauth-tutorial.md)
 
-#### [Go Back...](https://github.com/Ahmed3lmallah/Java-Portfolio/blob/master/README.md)
+#### [Go Back...](../Spring%20Microservices/)

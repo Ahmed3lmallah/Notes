@@ -1,4 +1,4 @@
-# Microservices
+# Spring Microservices
 
 ### Table of Contents
 
@@ -11,5 +11,3 @@
   * [Circuit Breaker](./Hystrix.md)
   * [UI Service](./UI.md)
   * [Spring Security](./Security.md)
-
-#### [Go Back...](../)
