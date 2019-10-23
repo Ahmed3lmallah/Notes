@@ -115,3 +115,5 @@
 `cf login -a api.run.pivotal.io` **logs in** to the PWS account.
 
 `cf push [[your_app]]` **deploys** app to PWS servers.
+
+`cf push -f manifest.yml` **deploys using manifest file.**
