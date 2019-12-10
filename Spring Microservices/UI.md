@@ -98,3 +98,108 @@ Build the project, execute the generated Spring Boot jar and go to [localhost:80
 
 1. by default, `npm run build` will execute `ng build` (specified in `package.json`)  
 1. by default, Angular will output the build result in `dist/{project-name}` (specified in `angular.json`)
+
+# Another Way to do it!
+
+## Managing NPM
+
+build.gradle
+
+    plugins {
+      id "com.moowork.node" version "1.2.0"
+    }
+    
+    ext {
+        // change this, if necessary, to be the path to the root of your Angular app
+        angularDir = projectDir
+    }
+    
+    node {
+        nodeModulesDir = file(angularDir)
+        download = true
+        version = '10.15.3'
+        npmVersion = '6.4.1'
+    }
+    
+    task compileAngular(type: NpmTask, dependsOn: npmInstall) {
+        def inputFiles = project.fileTree(dir: "${angularDir}/src", exclude: "**/karma-test-results.xml")
+        inputs.files(inputFiles)
+    
+        def outputFile = "${angularDir}/dist"
+        outputs.dir outputFile
+    
+        group 'build'
+        description = 'Compile client side assets for production'
+        args = ['run', 'build']
+    }
+    
+    task copyAngular(type: Copy, dependsOn: compileAngular) {
+        def inputFiles = project.fileTree(dir: "${angularDir}/dist")
+        inputs.files(inputFiles)
+    
+        def outputFile = "${projectDir}/src/main/resources/static"
+        outputs.dir outputFile
+    
+        from "${angularDir}/dist/$rootProject.name"
+        into "${projectDir}/src/main/resources/static"
+    }
+    
+    tasks.processResources.dependsOn(copyAngular)
+    
+    task testAngular(type: NpmTask, dependsOn: npmInstall) {
+        def inputFiles = project.fileTree(dir: "${angularDir}/src", exclude: "**/karma-test-results.xml")
+        inputs.files(inputFiles)
+    
+        def outputFile = "${angularDir}/coverage/"
+        outputs.dir outputFile
+    
+        group 'verification'
+        description = 'run ng test'
+        args = ['run', 'test']
+    }
+    
+    
+    tasks.check.dependsOn(testAngular)
+    
+    task lintAngular(type:NpmTask, dependsOn: npmInstall) {
+      def inputFiles = project.fileTree(dir: "${angularDir}/src", exclude: "**/karma-test-results.xml")
+      inputs.files(inputFiles)
+    
+      group 'build'
+      args = ['run', 'lint']
+    }
+
+### Angular Directory
+
+Be sure to change the `angularDir`, inside `ext`, to match where the root of your Angular app is.
+
+#### Examples
+
+	app-root-dir
+	+--- src // Angular app is here
+	|    +--- app
+	|    \\--- ...
+	\\--- server // Spring App is here
+		 +--- src
+		 |    +--- main
+		 |    \\--- test
+		 +--- build.gradle
+		 \\--- ...
+
+_Spring Boot app is within an inner folder_
+
+`angularDir = "$projectDir/../"`
+
+	app-root-dir
+	+--- src // Spring App is here
+	|    +--- main
+	|    \\--- test
+	+--- build.gradle
+	\\--- client // Angular app is here
+		 \\--- src
+			  +--- app
+			  \\--- ...
+
+_Spring Boot app is at the root, but Angular app is within an inner folder_
+
+`angularDir = "$projectDir/client/"`

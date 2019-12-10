@@ -14,14 +14,40 @@ The basic building block of an angular app is a component, which is comprised of
     
 *   A .spec file which is used for testing.
     
-
 Other notable files are module.ts and service.ts files.
 
 ## Getting Started
 
 Angular has 2 prerequisites needed before it can be used, node.js and an npm package manager. For more thorough getting started information [Angular’s getting started page](https://angular.io/guide/quickstart)
 
-Some knowledge of typescript, html and css is highly encouraged.
+### Updating NodeJS:
+
+Go to `nodejs.org` and download the latest version - uninstall (all) installed versions on your machine first.
+
+### Updating npm:
+
+Run `[sudo] npm install -g npm`  (sudo  is only required on Mac/ Linux)
+
+### Updating the CLI
+
+`[sudo] npm uninstall -g angular-cli @angular/cli`
+	
+`npm cache clean`
+	
+`[sudo] npm install -g @angular/cli`
+
+*Some knowledge of typescript, html and css is highly encouraged.*
+
+### Installing Bootstrap CSS
+
+`npm install --save bootstrap@3` Where 3 is the version we would like to install. *This only installs the Bootstrap locally in the Angular app `node_modules` folder.*
+
+We also need to add bootstrap to `angular.json` under Projects > architect > styles:
+
+	"styles": [
+		  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+		  "src/styles.css"
+		]
 
 ## Terms
 

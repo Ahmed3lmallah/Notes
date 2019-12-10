@@ -13,6 +13,7 @@
     *   [Merge Pipeline](#merge-pipeline)
     *   [Development Pipeline](#development-pipeline)
     *   [Production Pipeline](#production-pipeline)
+	*	[GitLab Webhooks](#gitlab-webhooks)
     *   [Jenkinsfile](#jenkinsfile)
 
 ## Introduction
@@ -268,6 +269,30 @@ Our **production** pipelines are designed to:
     
     *   For library artifacts (library JARs, etc.), this pipeline will _deliver_ into a _release_ repository, not _deploy_
         
+## GitLab Webhooks
+
+Webhooks can be used for binding events when something is happening within the project. They trigger Jenkins to excute the pipelines when a change is made to GitLab repositories, i.e. when a merge request or a push event are made.
+
+##### Setting up Webhooks:
+
+1. On GitLab project, go to setting - integrations
+
+1. Provide the URL to the Jenkins job
+
+1. Provide the secret token generated from the Jenkins job.
+
+1. Choose the trigger event:
+
+	* #### Merge request events for Merge Pipeline
+
+		![Merge Pipeline Webhook](./images/merge-pipeline-webhook.png)
+	
+	* #### Push events for Develop Pipeline
+
+		![Develop Pipeline Webhook](./images/develop-pipeline-webhook.png)
+
+1. Leave the SSL verification enabled.
+
 ## Jenkinsfile
 
 We use one `Jenkinsfile` that contains instructions for all three pipelines mentioned in this document. Using Jenkins `when` closures, we are able to create pipeline `steps` that are _do not run_ or _only run_ on certain Git branches.
