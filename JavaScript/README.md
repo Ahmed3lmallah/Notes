@@ -463,6 +463,8 @@ JavaScript also provides several ways to refactor arrow function syntax. The mos
 				return sum;
 			};
 
+#### [Summary](learn-javascript-functions.pdf)
+
 ## Higher Order Functions
 
 Higher-order functions are functions that accept other functions as arguments and/or return functions as output.
