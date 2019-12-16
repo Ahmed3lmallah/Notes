@@ -1,5 +1,101 @@
 # JavaScript Primer
 
+**TABLE OF CONTENT:**
+
+* [Data Types](#data-types)
+* [String](#string)
+	* [String Concatenation](#string-concatenation)
+	* [String Length](#string-length)
+	* [String Interpolation](#string-interpolation)
+* [Built-in Objects](#built-in-objects)
+* [Commenting](#commenting)
+* [Variables](#variables)
+	* [typeof operator](#typeof-operator)
+* [Conditional Statements](#conditional-statements)
+	* [The if keyword](#the-if-keyword)
+	* [The switch keyword](#the-switch-keyword)
+	* [Comparison Operators](#comparison-operators)
+	* [Logical Operators](#logical-operators)
+	* [Truthy and Falsy](#truthy-and-falsy)
+	* [Ternary Operator](#ternary-operator)
+* [Loops](#loops)
+	* [The For Loop](#the-for-loop)
+	* [The While Loop](#the-while-loop)
+	* [Do...While Statements](#dowhile-statements)
+	* [The break Keyword](#the-break-keyword)
+* [FUNCTIONS](#functions)
+	* [Function Declarations](#function-declarations)
+	* [Default Parameters](#default-parameters)
+	* [Return](#return)
+	* [Helper Functions](#helper-functions)
+	* [Function Expressions](#function-expressions)
+	* [Arrow Functions](#arrow-functions)
+	* [Concise Body Arrow Functions](#concise-body-arrow-functions)
+* [Higher Order Functions](#higher-order-functions)
+	* [Functions as Data](#functions-as-data)
+	* [Functions as Parameters](#functions-as-parameters)
+* [Scope](#scope)
+	* [Blocks and Scope](#blocks-and-scope)
+* [ARRAYS](#arrays)
+	* [Create an Array](#create-an-array)
+	* [Accessing Elements](#accessing-elements)
+	* [Update Elements](#update-elements)
+	* [Arrays Methods](#arrays-methods)
+	* [Nested Arrays](#nested-arrays)
+	* [Iterators](#iterators)
+* [OBJECTS](#objects)
+	* [Creating Object Literals](#creating-object-literals)
+	* [Accessing Properties](#accessing-properties)
+	* [Bracket Notation](#bracket-notation)
+	* [Property Assignment](#property-assignment)
+	* [Methods](#methods)
+	* [Nested Objects](#nested-objects)
+	* [Pass By Reference](#pass-by-reference)
+	* [Looping Through Objects](#looping-through-objects)
+	* [The this Keyword](#the-this-keyword)
+	* [Privacy](#privacy)
+	* [Getters](#getters)
+	* [Setters](#setters)
+	* [Factory Functions](#factory-functions)
+	* [Property Value Shorthand](#property-value-shorthand)
+	* [Destructured Assignment](#destructured-assignment)
+	* [Built-in Object Methods](#built-in-object-methods)
+* [CLASSES](#classes)
+	* [Constructor](#constructor)
+	* [Instance](#instance)
+	* [Methods](#methods-1)
+	* [Inheritance](#inheritance)
+	* [Static Methods](#static-methods)
+* [JAVASCRIPT MODULES](#javascript-modules)
+	* [`module.exports`](#moduleexports)
+	* [`require()`](#require)
+	* [export default](#export-default)
+	* [import](#import)
+	* [Named Exports](#named-exports)
+	* [Named Imports](#named-imports)
+	* [Export Named Exports](#export-named-exports)
+	* [Export as](#export-as)
+* [JAVASCRIPT PROMISES](#javascript-promises)
+	* [What is a Promise?](#what-is-a-promise)
+	* [Constructing a Promise Object](#constructing-a-promise-object)
+	* [The Node `setTimeout()` Function](#the-node-settimeout-function)
+	* [Consuming Promises](#consuming-promises)
+	* [The onFulfilled and onRejected Functions](#the-onfulfilled-and-onrejected-functions)
+	* [Using `catch()` with Promises](#using-catch-with-promises)
+	* [Chaining Multiple Promises](#chaining-multiple-promises)
+	* [Avoiding Common Mistakes](#avoiding-common-mistakes)
+	* [Using `Promise.all()`](#using-promiseall)
+* [ASYNC AWAIT](#async-await)
+	* [Introduction](#introduction)
+	* [The async Keyword](#the-async-keyword)
+	* [The await Operator](#the-await-operator)
+	* [Handling Dependent Promises](#handling-dependent-promises)
+	* [Handling Errors](#handling-errors)
+	* [Handling Independent Promises](#handling-independent-promises)
+	* [Await Promise.all()](#await-promiseall)
+* [BROWSER COMPATIBILITY AND TRANSPILATION](#browser-compatibility-and-transpilation)
+
+
 ## Data Types
 
 Data types are the classifications we give to the different kinds of data that we use in programming. In JavaScript, there are seven fundamental data types:
@@ -17,14 +113,6 @@ Data types are the classifications we give to the different kinds of data that w
 1. **Symbol:** A newer feature to the language, symbols are unique identifiers, useful in more complex coding. No need to worry about these for now.
 
 1. **Object:** Collections of related data.
-
-## Arithmetic Operators
-
-1. Add: `+`
-1. Subtract: `-`
-1. Multiply: `*`
-1. Divide: `/`
-1. Remainder: `%`
 
 ## String
 
@@ -260,95 +348,6 @@ A do...while statement says to do a task once and then keep doing it until a spe
 
 The break keyword allows programs to “break” out of the loop from within the loop’s block.
 
-## Iterators 
-
-Iterators are methods called on arrays to manipulate elements and return values.
-
-Notice the different methods being called on the arrays:
-
-* **The `.forEach()` Method**
-
-	Aptly named, .forEach() will execute the same code for each element of an array.
-
-		const artists = ['Picasso', 'Kahlo', 'Matisse', 'Utamaro'];
-		
-		artists.forEach(function(artist){
-			console.log(artist + ' is one of my favorite artists.');
-		});
-		
-	Another way to pass a callback for .forEach() is to use arrow function syntax.
-		
-		artists.forEach(artist => {
-		  console.log(artist + ' is one of my favorite artists.');
-		});
-		
-	We can also define a function beforehand to be used as the callback function. 
-	
-		function printArtist(artist){
-		  console.log(artist + ' is one of my favorite artists.');
-		}
-
-		artists.forEach(printArtist);
-	
-	*The return value for `.forEach()` will always be `undefined`.*
-
-* **The `.map()` Method**
-
-	When .map() is called on an array, it takes an argument of a callback function and returns a new array!
-	
-		const numbers = [1, 2, 3, 4, 5];
-		
-		const squareNumbers = numbers.map(number => {
-		  return number * number;
-		});
-
-
-* **The `.filter()` Method**
-
-	Like `.map()`, `.filter()` returns a new array. However, `.filter()` returns an array of elements after filtering out certain elements from the original array. The callback function for the `.filter()` method should return `true` or `false` depending on the element that is passed to it. The elements that cause the callback function to return true are added to the new array.
-	
-		const things = ['desk', 'chair', 5, 'backpack', 3.14, 100];
-
-		const onlyNumbers = things.filter(thing => {
-		  return typeof thing === 'number';
-		});
-
-* **The `.findIndex()` Method**
-
-	We sometimes want to find the location of an element in an array. That’s where the .findIndex() method comes in! Calling .findIndex() on an array will return the index of the first element that evaluates to true in the callback function.
-
-		const jumbledNums = [123, 25, 78, 5, 9]; 
-
-		const lessThanTen = jumbledNums.findIndex(num => {
-		  return num < 10;
-		});
-
-	If there isn’t a single element in the array that satisfies the condition in the callback, then .findIndex() will return `-1`.
-
-* **The `.reduce()` Method**
-
-	Another widely used iteration method is `.reduce()`. The `.reduce()` method returns a single value after iterating through the elements of an array, thereby reducing the array. Take a look at the example below:
-
-		const numbers = [1, 2, 4, 10];
-
-		const summedNums = numbers.reduce((accumulator, currentValue) => {
-		  return accumulator + currentValue
-		})
-
-		console.log(summedNums) // Output: 17	
-
-	The `.reduce()` method can also take an optional second parameter to set an initial value for accumulator (remember, the first argument is the callback function!). For instance:
-
-		const numbers = [1, 2, 4, 10];
-
-		const summedNums = numbers.reduce((accumulator, currentValue) => {
-		  return accumulator + currentValue
-		}, 100)  // <- Second argument for .reduce()
-
-		console.log(summedNums); // Output: 117
-		
-* **[More Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods)**
-
 ## FUNCTIONS
 
 ### Function Declarations
@@ -567,7 +566,96 @@ In the previous exercise, you learned how to access elements inside an array or 
 Arrays can store other arrays. When an array contains another array it is known as a nested array. Examine the example below:
 
 	const nestedArr = [[1], [2, 3]];
+
+## Iterators 
+
+Iterators are methods called on arrays to manipulate elements and return values.
+
+Notice the different methods being called on the arrays:
+
+* **The `.forEach()` Method**
+
+	Aptly named, .forEach() will execute the same code for each element of an array.
+
+		const artists = ['Picasso', 'Kahlo', 'Matisse', 'Utamaro'];
+		
+		artists.forEach(function(artist){
+			console.log(artist + ' is one of my favorite artists.');
+		});
+		
+	Another way to pass a callback for .forEach() is to use arrow function syntax.
+		
+		artists.forEach(artist => {
+		  console.log(artist + ' is one of my favorite artists.');
+		});
+		
+	We can also define a function beforehand to be used as the callback function. 
 	
+		function printArtist(artist){
+		  console.log(artist + ' is one of my favorite artists.');
+		}
+
+		artists.forEach(printArtist);
+	
+	*The return value for `.forEach()` will always be `undefined`.*
+
+* **The `.map()` Method**
+
+	When .map() is called on an array, it takes an argument of a callback function and returns a new array!
+	
+		const numbers = [1, 2, 3, 4, 5];
+		
+		const squareNumbers = numbers.map(number => {
+		  return number * number;
+		});
+
+
+* **The `.filter()` Method**
+
+	Like `.map()`, `.filter()` returns a new array. However, `.filter()` returns an array of elements after filtering out certain elements from the original array. The callback function for the `.filter()` method should return `true` or `false` depending on the element that is passed to it. The elements that cause the callback function to return true are added to the new array.
+	
+		const things = ['desk', 'chair', 5, 'backpack', 3.14, 100];
+
+		const onlyNumbers = things.filter(thing => {
+		  return typeof thing === 'number';
+		});
+
+* **The `.findIndex()` Method**
+
+	We sometimes want to find the location of an element in an array. That’s where the .findIndex() method comes in! Calling .findIndex() on an array will return the index of the first element that evaluates to true in the callback function.
+
+		const jumbledNums = [123, 25, 78, 5, 9]; 
+
+		const lessThanTen = jumbledNums.findIndex(num => {
+		  return num < 10;
+		});
+
+	If there isn’t a single element in the array that satisfies the condition in the callback, then .findIndex() will return `-1`.
+
+* **The `.reduce()` Method**
+
+	Another widely used iteration method is `.reduce()`. The `.reduce()` method returns a single value after iterating through the elements of an array, thereby reducing the array. Take a look at the example below:
+
+		const numbers = [1, 2, 4, 10];
+
+		const summedNums = numbers.reduce((accumulator, currentValue) => {
+		  return accumulator + currentValue
+		})
+
+		console.log(summedNums) // Output: 17	
+
+	The `.reduce()` method can also take an optional second parameter to set an initial value for accumulator (remember, the first argument is the callback function!). For instance:
+
+		const numbers = [1, 2, 4, 10];
+
+		const summedNums = numbers.reduce((accumulator, currentValue) => {
+		  return accumulator + currentValue
+		}, 100)  // <- Second argument for .reduce()
+
+		console.log(summedNums); // Output: 117
+		
+* **[More Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods)**
+
 ## OBJECTS
 
 ### Creating Object Literals
@@ -877,166 +965,6 @@ Take the Date class, for example — you can both create Date instances to repre
 		const randomNumber = Math.floor(Math.random()*5);
 		return names[randomNumber];
 	  }
-	  
-## BROWSER COMPATIBILITY AND TRANSPILATION
-
-**Transpilation is the process of converting one programming language to another.**
-
-Two important tools for addressing browser compatibility issues.
-
-* [caniuse.com](https://caniuse.com/) — A website that provides data on web browser compatibility for HTML, CSS, and JavaScript features.
-
-* Babel — A Javascript library that you can use to convert new, unsupported JavaScript (ES6), into an older version (ES5) that is recognized by most modern browsers. 
-
-#### Summary of Steps:
-		
-1. Initialize your project using npm init and create a directory called src
-1. Install babel dependencies by running
-
-		npm install babel-cli -D
-		npm install babel-preset-env -D
-
-1. Create a .babelrc file inside your project and add the following code inside it:
-
-		{
-		  "presets": ["env"]
-		}
-
-1. Add the following script to your scripts object in package.json: `"build": "babel src -d lib"`
-1. Run `npm run build` whenever you want to transpile your code from your src to lib directories.
-
-### 1. `npm init`
-
-The first step is to place your ES6 JavaScript file in a directory called src. From your root directory, the path to the ES6 file is ./src/main.js
-
-The initial JavaScript project file structure is:
-
-	project
-	|_ src
-	|___ main.js
-
-Before we install Babel, we need to setup our project to use the node package manager (npm). Developers use npm to access and manage Node packages. Node packages are directories that contain JavaScript code written by other developers. You can use these packages to reduce duplication of work and avoid bugs.
-
-Before we can add Babel to our project directory, we need to run `npm init`. The `npm init` command creates a `package.json` file in the root directory.
-
-A `package.json` file contains information about the current JavaScript project. Some of this information includes:
-
-1. Metadata — This includes a project title, description, authors, and more.
-1. A list of node packages required for the project — If another developer wants to run your project, npm looks inside package.json and downloads the packages in this list.
-1. Key-value pairs for command line scripts — You can use npm to run these shorthand scripts to perform some process. In a later exercise, we will add a script that runs Babel and transpiles ES6 to ES5.
-
-If you have Node installed on your computer, you can create a `package.json` file by typing `npm init` into the terminal.
-
-The terminal prompts you to fill in fields for the project’s metadata (name, description, etc.)
-
-You are not required to answer the prompts, though we recommend at minimum, you add your own title and description. If you don’t want to fill in a field, you can press enter. npm will leave fill these fields with default values or leave them empty when it creates the package.json file.
-
-After you run `npm init` your directory structure will contain the following files and folders:
-
-	project
-	|_ src
-	|___ main.js
-	|_ package.json
-
-### 2. Install Node Packages
-
-We use the npm install command to install new Node packages locally. The install command creates a folder called node_modules and copies the package files to it. The install command also installs all of the dependencies for the given package.
-
-To install Babel, we need to npm install two packages, babel-cli and babel-preset-env. However, npm installs over one hundred other packages that are dependencies for Babel to run properly.
-
-We install Babel with the following two commands:
-
-	$ npm install babel-cli -D
-	$ npm install babel-preset-env -D
-
-The babel-cli package includes command line Babel tools, and the babel-preset-env package has the code that maps any JavaScript feature, ES6 and above (ES6+), to ES5.
-
-The `-D` flag instructs npm to add each package to a property called devDependencies in package.json. Once the project’s dependencies are listed in devDependencies, other developers can run your project without installing each package separately. Instead, they can simply run `npm install` — it instructs npm to look inside package.json and download all of the packages listed in devDependencies.
-
-Once you npm install packages, you can find the Babel packages and all their dependencies in the node_modules folder. The new directory structure contains the following:
-
-	project
-	|_ node_modules
-	|___ .bin
-	|___ ...
-	|_ src
-	|___ main.js
-	|_ package.json
-
-The ... in the file structure above is a placeholder for 100+ packages that npm installed.
-
-### 3. `.babelrc`
-
-Now that you’ve downloaded the Babel packages, you need to specify the version of the source JavaScript code.
-
-You can specify the initial JavaScript version inside of a file named `.babelrc`. In your root directory, you can run touch .babelrc to create this file.
-
-Your project directory contains the following folders and files:
-
-	project
-	|_ node_modules
-	|___ .bin
-	|___ ...
-	|_ src
-	|___ main.js
-	|_ .babelrc
-	|_ package.json
-
-Inside .babelrc you need to define the preset for your source JavaScript file. The preset specifies the version of your initial JavaScript file.
-
-Usually, you want to transpile JavaScript code from versions ES6 and later (ES6+) to ES5. From this point on, we will refer to our source code as ES6+, because Ecma introduces new syntax with each new version of JavaScript.
-
-To specify that we are transpiling code from an ES6+ source, we have to add the following JavaScript object into .babelrc:
-
-	{
-	  "presets": ["env"]
-	}
-	
-When you run Babel, it looks in .babelrc to determine the version of the initial JavaScript file. In this case, `["env"]` instructs Babel to transpile any code from versions ES6 and later.
-
-### 4. Babel Source Lib
-
-We need to specify a script in package.json that initiates the ES6+ to ES5 transpilation.
-
-Inside of the package.json file, there is a property named "scripts" that holds an object for specifying command line shortcuts. It looks like this:
-
-	...
-	"scripts": {
-	  "test": "echo \"Error: no test specified\" && exit 1"
-	}, ...
-
-In the code above, the "scripts" property contains an object with one property called "test". Below the "test" property, we will add a script that runs Babel like this:
-
-	...
-	"scripts": {
-	  "test": "echo \"Error: no test specified\" && exit 1",
-	  "build": "babel src -d lib"
-	}
-
-In the "scripts" object above, we add a property called "build". The property’s value, "babel src -d lib", is a command line method that transpiles ES6+ code to ES5.
-
-### 5. Build
-
-From the command line, we type: `npm run build`
-
-The command above runs the build script in package.json.
-
-Babel writes the ES5 code to a file named main.js (it’s always the same name as the original file), inside of a folder called lib. The resulting directory structure is:
-
-	project
-	|_ lib
-	|___ main.js
-	|_ node_modules
-	|___ .bin
-	|___ ...
-	|_ src
-	|___ main.js
-	|_ .babelrc
-	|_ package.json
-
-Notice, the directory contains a new folder named lib, with one file, called main.js.
-
-The npm run build command will transpile all JavaScript files inside of the src folder. This is helpful as you build larger JavaScript projects — regardless of the number of JavaScript files, you only need to run one command (npm run build) to transpile all of your code.
 
 ## JAVASCRIPT MODULES
 
@@ -1457,3 +1385,230 @@ The await keyword can only be used inside an async function. await is an operato
 	}
 
 	asyncFuncExample();
+	
+### Handling Dependent Promises
+
+Here’s how we’d write an async function to accomplish [Multiple Promises Chaining](#chaining-multiple-promises):
+
+	async function asyncAwaitVersion() {
+	 let firstValue = await returnsFirstPromise();
+	 console.log(firstValue);
+	 let secondValue = await returnsSecondPromise(firstValue);
+	 console.log(secondValue);
+	}
+	
+### Handling Errors
+
+When `.catch()` is used with a long promise chain, there is no indication of where in the chain the error was thrown. This can make debugging challenging.
+
+With async...await, we use try...catch statements for error handling. By using this syntax, not only are we able to handle errors in the same way we do with synchronous code, but we can also catch both synchronous and asynchronous errors. This makes for easier debugging!
+
+	async function usingTryCatch() {
+	 try {
+	   let resolveValue = await asyncFunction('thing that will fail');
+	   let secondValue = await secondAsyncFunction(resolveValue);
+	 } catch (err) {
+	   // Catches any errors in the try block
+	   console.log(err);
+	 }
+	}
+
+	usingTryCatch();
+
+Remember, since async functions return promises we can still use native promise’s `.catch()` with an async function
+
+	async function usingPromiseCatch() {
+	   let resolveValue = await asyncFunction('thing that will fail');
+	}
+
+	let rejectedPromise = usingPromiseCatch();
+	rejectedPromise.catch((rejectValue) => {
+	console.log(rejectValue);
+	})
+	
+### Handling Independent Promises
+
+What if our async function contains multiple promises which are not dependent on the results of one another to execute?
+
+	async function concurrent() {
+		const firstPromise = firstAsyncThing();
+		const secondPromise = secondAsyncThing();
+		console.log(await firstPromise, await secondPromise);
+	}
+
+In our `concurrent()` function, both promises are constructed without using await. We then await each of their resolutions to print them to the console. This allows both promises’ asynchronous operations to run simultaneously.
+
+Note: if we have multiple truly independent promises that we would like to execute fully in parallel, we must use individual `.then()` functions and avoid halting our execution with `await`.
+
+### Await Promise.all()
+
+We can pass an array of promises as the argument to `Promise.all()`, and it will return a single promise. This promise will resolve when all of the promises in the argument array have resolved. This promise’s resolve value will be an array containing the resolved values of each promise from the argument array.
+
+	async function asyncPromAll() {
+	  const resultArray = await Promise.all([asyncTask1(), asyncTask2(), asyncTask3(), asyncTask4()]);
+	  for (let i = 0; i<resultArray.length; i++){
+		console.log(resultArray[i]); 
+	  }
+	}
+
+`Promise.all()` allows us to take advantage of asynchronicity— each of the four asynchronous tasks can process concurrently. `Promise.all()` also has the benefit of failing fast, meaning it won’t wait for the rest of the asynchronous actions to complete once any one has rejected. As soon as the first promise in the array rejects, the promise returned from `Promise.all()` will reject with that reason. As it was when working with native promises, `Promise.all()` is a good choice if multiple asynchronous tasks are all required, but none must wait for any other before executing.
+
+## BROWSER COMPATIBILITY AND TRANSPILATION
+
+**Transpilation is the process of converting one programming language to another.**
+
+Two important tools for addressing browser compatibility issues.
+
+* [caniuse.com](https://caniuse.com/) — A website that provides data on web browser compatibility for HTML, CSS, and JavaScript features.
+
+* Babel — A Javascript library that you can use to convert new, unsupported JavaScript (ES6), into an older version (ES5) that is recognized by most modern browsers. 
+
+#### Summary of Steps:
+		
+1. Initialize your project using npm init and create a directory called src
+1. Install babel dependencies by running
+
+		npm install babel-cli -D
+		npm install babel-preset-env -D
+
+1. Create a .babelrc file inside your project and add the following code inside it:
+
+		{
+		  "presets": ["env"]
+		}
+
+1. Add the following script to your scripts object in package.json: `"build": "babel src -d lib"`
+1. Run `npm run build` whenever you want to transpile your code from your src to lib directories.
+
+### 1. `npm init`
+
+The first step is to place your ES6 JavaScript file in a directory called src. From your root directory, the path to the ES6 file is ./src/main.js
+
+The initial JavaScript project file structure is:
+
+	project
+	|_ src
+	|___ main.js
+
+Before we install Babel, we need to setup our project to use the node package manager (npm). Developers use npm to access and manage Node packages. Node packages are directories that contain JavaScript code written by other developers. You can use these packages to reduce duplication of work and avoid bugs.
+
+Before we can add Babel to our project directory, we need to run `npm init`. The `npm init` command creates a `package.json` file in the root directory.
+
+A `package.json` file contains information about the current JavaScript project. Some of this information includes:
+
+1. Metadata — This includes a project title, description, authors, and more.
+1. A list of node packages required for the project — If another developer wants to run your project, npm looks inside package.json and downloads the packages in this list.
+1. Key-value pairs for command line scripts — You can use npm to run these shorthand scripts to perform some process. In a later exercise, we will add a script that runs Babel and transpiles ES6 to ES5.
+
+If you have Node installed on your computer, you can create a `package.json` file by typing `npm init` into the terminal.
+
+The terminal prompts you to fill in fields for the project’s metadata (name, description, etc.)
+
+You are not required to answer the prompts, though we recommend at minimum, you add your own title and description. If you don’t want to fill in a field, you can press enter. npm will leave fill these fields with default values or leave them empty when it creates the package.json file.
+
+After you run `npm init` your directory structure will contain the following files and folders:
+
+	project
+	|_ src
+	|___ main.js
+	|_ package.json
+
+### 2. Install Node Packages
+
+We use the npm install command to install new Node packages locally. The install command creates a folder called node_modules and copies the package files to it. The install command also installs all of the dependencies for the given package.
+
+To install Babel, we need to npm install two packages, babel-cli and babel-preset-env. However, npm installs over one hundred other packages that are dependencies for Babel to run properly.
+
+We install Babel with the following two commands:
+
+	$ npm install babel-cli -D
+	$ npm install babel-preset-env -D
+
+The babel-cli package includes command line Babel tools, and the babel-preset-env package has the code that maps any JavaScript feature, ES6 and above (ES6+), to ES5.
+
+The `-D` flag instructs npm to add each package to a property called devDependencies in package.json. Once the project’s dependencies are listed in devDependencies, other developers can run your project without installing each package separately. Instead, they can simply run `npm install` — it instructs npm to look inside package.json and download all of the packages listed in devDependencies.
+
+Once you npm install packages, you can find the Babel packages and all their dependencies in the node_modules folder. The new directory structure contains the following:
+
+	project
+	|_ node_modules
+	|___ .bin
+	|___ ...
+	|_ src
+	|___ main.js
+	|_ package.json
+
+The ... in the file structure above is a placeholder for 100+ packages that npm installed.
+
+### 3. `.babelrc`
+
+Now that you’ve downloaded the Babel packages, you need to specify the version of the source JavaScript code.
+
+You can specify the initial JavaScript version inside of a file named `.babelrc`. In your root directory, you can run touch .babelrc to create this file.
+
+Your project directory contains the following folders and files:
+
+	project
+	|_ node_modules
+	|___ .bin
+	|___ ...
+	|_ src
+	|___ main.js
+	|_ .babelrc
+	|_ package.json
+
+Inside .babelrc you need to define the preset for your source JavaScript file. The preset specifies the version of your initial JavaScript file.
+
+Usually, you want to transpile JavaScript code from versions ES6 and later (ES6+) to ES5. From this point on, we will refer to our source code as ES6+, because Ecma introduces new syntax with each new version of JavaScript.
+
+To specify that we are transpiling code from an ES6+ source, we have to add the following JavaScript object into .babelrc:
+
+	{
+	  "presets": ["env"]
+	}
+	
+When you run Babel, it looks in .babelrc to determine the version of the initial JavaScript file. In this case, `["env"]` instructs Babel to transpile any code from versions ES6 and later.
+
+### 4. Babel Source Lib
+
+We need to specify a script in package.json that initiates the ES6+ to ES5 transpilation.
+
+Inside of the package.json file, there is a property named "scripts" that holds an object for specifying command line shortcuts. It looks like this:
+
+	...
+	"scripts": {
+	  "test": "echo \"Error: no test specified\" && exit 1"
+	}, ...
+
+In the code above, the "scripts" property contains an object with one property called "test". Below the "test" property, we will add a script that runs Babel like this:
+
+	...
+	"scripts": {
+	  "test": "echo \"Error: no test specified\" && exit 1",
+	  "build": "babel src -d lib"
+	}
+
+In the "scripts" object above, we add a property called "build". The property’s value, "babel src -d lib", is a command line method that transpiles ES6+ code to ES5.
+
+### 5. Build
+
+From the command line, we type: `npm run build`
+
+The command above runs the build script in package.json.
+
+Babel writes the ES5 code to a file named main.js (it’s always the same name as the original file), inside of a folder called lib. The resulting directory structure is:
+
+	project
+	|_ lib
+	|___ main.js
+	|_ node_modules
+	|___ .bin
+	|___ ...
+	|_ src
+	|___ main.js
+	|_ .babelrc
+	|_ package.json
+
+Notice, the directory contains a new folder named lib, with one file, called main.js.
+
+The npm run build command will transpile all JavaScript files inside of the src folder. This is helpful as you build larger JavaScript projects — regardless of the number of JavaScript files, you only need to run one command (npm run build) to transpile all of your code.
