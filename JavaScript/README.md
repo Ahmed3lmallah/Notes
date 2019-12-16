@@ -6,6 +6,7 @@ REFERENCE: [Codecademy.com](https://www.codecademy.com/learn/introduction-to-jav
 
 **TABLE OF CONTENT:**
 
+* [INTRODUCTION](learn-javascript-introduction.pdf)
 * [DATA TYPES](#data-types)
 * [STRING](#string)
 	* [String Concatenation](#string-concatenation)
@@ -213,6 +214,8 @@ The `typeof` operator checks the value to its right and returns, or passes back,
 
 ## Conditional Statements
 
+#### [Summary](learn-javascript-conditionals.pdf)
+
 ### The if keyword
 
 	if (true) {
@@ -354,6 +357,8 @@ The break keyword allows programs to “break” out of the loop from within the
 
 ## FUNCTIONS
 
+#### [Summary](learn-javascript-functions.pdf)
+
 ### Function Declarations
 
 In JavaScript, there are many ways to create a function. One way to create a function is by using a function declaration. Just like how a variable declaration binds a value to a variable name, a function declaration binds a function to a name, or an identifier. Take a look at the anatomy of a function declaration below:
@@ -463,8 +468,6 @@ JavaScript also provides several ways to refactor arrow function syntax. The mos
 				return sum;
 			};
 
-#### [Summary](learn-javascript-functions.pdf)
-
 ## Higher Order Functions
 
 Higher-order functions are functions that accept other functions as arguments and/or return functions as output.
@@ -516,6 +519,8 @@ We then invoked timeFuncRuntime() first with the addOneToOne() function - note h
 
 
 ## Scope
+
+#### [Summary](learn-javascript-scope.pdf)
 
 An important idea in programming is scope. Scope defines where variables can be accessed or referenced.	
 
