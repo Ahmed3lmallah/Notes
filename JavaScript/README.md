@@ -1,5 +1,9 @@
 # JavaScript Primer
 
+BY: AHMED ELMALLAH
+
+REFERENCE: [Codecademy.com](https://www.codecademy.com/learn/introduction-to-javascript)
+
 **TABLE OF CONTENT:**
 
 * [DATA TYPES](#data-types)
