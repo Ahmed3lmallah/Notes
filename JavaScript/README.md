@@ -571,7 +571,7 @@ Arrays can store other arrays. When an array contains another array it is known 
 
 	const nestedArr = [[1], [2, 3]];
 
-## Iterators 
+### Iterators 
 
 Iterators are methods called on arrays to manipulate elements and return values.
 
